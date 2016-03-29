@@ -2,14 +2,17 @@
 var SongQueue = Songs.extend({
 
   initialize: function(){
-    //determine if the current song is the only song in the collection
+    this.on('add', this.enqueue, this);
+  },
+
+  enqueue: function() {
+    if (this.length === 1) {
       this.playFirst();
-    
+    }
   },
 
   playFirst: function() {
-    this.get('currentSong');
-    this.trigger('play', this);
+    this.at(0).play();
   }
-  
+
 });
