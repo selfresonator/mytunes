@@ -12,15 +12,17 @@ var SongModel = Backbone.Model.extend({
     // console.log(this.get('count'));
   },
 
-
   enqueue: function(){
-    this.trigger('enqueue', this);
-    // this.set('count', 0);
-    console.log(this.get('count'));
-    // this.trigger('enqueue', this.get('library').at('count'));
+    this.trigger('enqueue',this);
   },
 
-  restore: function(){
+  dequeue: function(){
+    this.trigger('dequeue', this);
+
+  },
+
+  ended: function(){
+    this.trigger('ended', this);
   }
 
 });
